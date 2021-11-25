@@ -6,7 +6,7 @@ Now you can get data from public profile pages on Instagram without logging in.
 ## Get started
 
 This repository requires `Composer 2.x` to install. 
-You can update it using a simple command in your console: `composer self-update --preview`
+You can update it using a simple command in your console: `composer self-update --preview`.
 Also, you need to run on `PHP 7.2.x`. 
 
 Composer command to install:
