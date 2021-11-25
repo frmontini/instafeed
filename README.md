@@ -44,4 +44,4 @@ You can clear persisted data from a specific profile using the `noCache` functio
 
 ## License
 
-MIT
+OSL-3.0
