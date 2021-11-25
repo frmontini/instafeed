@@ -1,6 +1,7 @@
 {
     "name": "frmontini/instafeed",
     "description": "Get basic information and latest posts from a public Instagram profile.",
+    "license": "MIT",
     "authors": [
         {
             "name": "Fernando Montini",
