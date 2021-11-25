@@ -6,13 +6,13 @@ $utils = new InstaFeed\Utils();
 
 /* TO GET INSTAGRAM CONTENT */
 
-$username = 'socialeadsbrasil';
+$username = 'cocacola';
 $data = $utils->getData($username);
 print_r($data);
 
 /* TO CLEAR CACHE */
 
-$username = 'example';
+$username = 'cocacola';
 $utils->noCache($username);
 
 
