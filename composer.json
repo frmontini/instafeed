@@ -1,0 +1,19 @@
+{
+    "name": "frmontini/instafeed",
+    "description": "Get basic information and latest posts from a public Instagram profile.",
+    "authors": [
+        {
+            "name": "Fernando Montini",
+            "email": "falamontini@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.2.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "InstaFeed": "src/"
+        }
+    }
+}
