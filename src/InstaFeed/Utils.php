@@ -24,27 +24,18 @@ class Utils {
     
             $data = false;
 
-            if(strpos($result, 'window._sharedData = ') !== false)
+            if(strpos($result, '"result":{"response":"{\"data\":') !== false)
             {
-                $data = explode('window._sharedData = ',$result)[1];
-                $data = explode(';</script>', $data)[0];
+                $data = explode('"result":{"response":"{\"data\":',$result)[1];
+                $data = '"{\"data\":'.explode(',"status_code":200', $data)[0];
             }
             else
             {
                 return false;
             }
 
-            $cursor = false;
-
-            if(strpos($result, '"end_cursor":"') !== false)
-            {
-                $cursor = explode('"end_cursor":"',$result)[1];
-                $cursor = explode('"', $cursor)[0];
-            }
-
             $array = array(
                 'Cookies' => $cookies,
-                'Cursor'  => $cursor,
                 'Shared'  => json_decode($data, true)
             );
 
