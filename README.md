@@ -29,7 +29,7 @@ $utils = new InstaFeed\Utils();
 
 $username = 'cocacola';
 $data = $utils->getData($username);
-print_r($data);
+print_r(json_decode($data));
 
 /* TO CLEAR CACHE */
 
