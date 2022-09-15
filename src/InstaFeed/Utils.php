@@ -8,40 +8,16 @@ class Utils {
     {
         if(!file_exists(__DIR__.'/../../json/'.$username.'.json'))
         {
-            $ch = curl_init('https://www.instagram.com/'.$username);
-            curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3");
+            $ch = curl_init('https://i.instagram.com/api/v1/users/web_profile_info/?username='.$username);
             curl_setopt($ch, CURLOPT_REFERER, 'https://www.instagram.com/');
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-            curl_setopt($ch, CURLOPT_HEADER, 1);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array("x-ig-app-id: 936619743392459"));
             $result = curl_exec($ch);
-            preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', $result, $matches);
-            $cookies = array();
-            foreach($matches[1] as $item) {
-                parse_str($item, $cookie);
-                $cookies = array_merge($cookies, $cookie);
-            }
+
+            file_put_contents(__DIR__.'/../../json/'.$username.'.json', $result);
     
-            $data = false;
-
-            if(strpos($result, '"result":{"response":"{\"data\":') !== false)
-            {
-                $data = explode('"result":{"response":"{\"data\":',$result)[1];
-                $data = '"{\"data\":'.explode(',"status_code":200', $data)[0];
-            }
-            else
-            {
-                return false;
-            }
-
-            $array = array(
-                'Cookies' => $cookies,
-                'Shared'  => json_decode($data, true)
-            );
-
-            file_put_contents(__DIR__.'/../../json/'.$username.'.json', json_encode($array));
-    
-            return $array;
+            return $result;
         }
         else
         {
